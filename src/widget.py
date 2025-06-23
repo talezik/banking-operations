@@ -18,3 +18,14 @@ def mask_account_card(info: str) -> str:
         return f"{name} {get_mask_account(number)}"
     else:
         raise ValueError("Неверный формат номера")
+
+
+def get_date(date_str: str) -> str:
+    """
+    Преобразует дату из формата ISO в формат ДД.ММ.ГГГГ.
+    """
+    from datetime import datetime
+
+    # Парсим дату
+    date_obj = datetime.fromisoformat(date_str.rstrip('Z').split('T')[0])
+    return date_obj.strftime("%d.%m.%Y")
